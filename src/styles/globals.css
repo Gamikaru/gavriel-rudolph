@@ -1,0 +1,62 @@
+/* src/styles/globals.css */
+@import "tailwindcss";
+
+/* Define our theme system */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Base theme (light) */
+:root {
+  --background: oklch(1 0 0);         /* White */
+  --foreground: oklch(0.1 0 0);       /* Near black */
+  --primary: oklch(0.6 0.2 240);      /* Blue */
+  --secondary: oklch(0.7 0.15 270);   /* Purple */
+  --accent: oklch(0.7 0.3 30);        /* Orange */
+  --muted: oklch(0.96 0 0);           /* Light gray */
+  --muted-foreground: oklch(0.45 0 0); /* Medium gray */
+  --border: oklch(0.9 0 0);           /* Light border */
+}
+
+/* Dark theme */
+.dark {
+  --background: oklch(0.15 0 0);      /* Dark gray */
+  --foreground: oklch(0.98 0 0);      /* Off-white */
+  --primary: oklch(0.7 0.2 240);      /* Brighter blue */
+  --secondary: oklch(0.8 0.15 270);   /* Brighter purple */
+  --accent: oklch(0.8 0.3 30);        /* Brighter orange */
+  --muted: oklch(0.2 0 0);            /* Dark gray */
+  --muted-foreground: oklch(0.7 0 0); /* Light gray */
+  --border: oklch(0.3 0 0);           /* Dark border */
+}
+
+/* Green theme */
+[data-theme="green"] {
+  --primary: oklch(0.6 0.2 140);      /* Green */
+  --secondary: oklch(0.7 0.15 110);   /* Yellow-green */
+  --accent: oklch(0.7 0.25 90);       /* Yellow */
+}
+
+/* Purple theme */
+[data-theme="purple"] {
+  --primary: oklch(0.6 0.25 300);     /* Purple */
+  --secondary: oklch(0.7 0.2 280);    /* Violet */
+  --accent: oklch(0.7 0.3 320);       /* Pink */
+}
+
+/* Map CSS variables to Tailwind utility classes */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
