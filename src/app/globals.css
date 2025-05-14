@@ -1,26 +1,103 @@
+/* src/styles/themes/theme-config.css */
+
 @import "tailwindcss";
 
+/*******************************************************************************
+ * TAILWIND v4 THEME CONFIGURATION
+ *
+ * This file establishes the core theme system using Tailwind v4's CSS-first
+ * configuration approach with the @theme directive.
+ *******************************************************************************/
+
+/* Base theme configuration using the new @theme directive */
+@theme {
+  /* Color System - Using modern OKLCH colors for better vibrancy */
+
+  /* Green Scale - Primary Brand */
+  --color-green-50: oklch(0.99 0.03 160);
+  --color-green-100: oklch(0.96 0.06 160);
+  --color-green-200: oklch(0.91 0.10 160);
+  --color-green-300: oklch(0.86 0.14 160);
+  --color-green-400: oklch(0.78 0.17 160);
+  --color-green-500: oklch(0.70 0.20 160);
+  --color-green-600: oklch(0.60 0.18 160);
+  --color-green-700: oklch(0.50 0.16 160);
+  --color-green-800: oklch(0.40 0.12 160);
+  --color-green-900: oklch(0.30 0.08 160);
+  --color-green-950: oklch(0.20 0.05 160);
+
+  /* Gray Scale - Neutral */
+  --color-gray-50: oklch(0.98 0.005 240);
+  --color-gray-100: oklch(0.94 0.01 240);
+  --color-gray-200: oklch(0.87 0.015 240);
+  --color-gray-300: oklch(0.78 0.02 240);
+  --color-gray-400: oklch(0.69 0.025 240);
+  --color-gray-500: oklch(0.60 0.03 240);
+  --color-gray-600: oklch(0.51 0.025 240);
+  --color-gray-700: oklch(0.42 0.02 240);
+  --color-gray-800: oklch(0.33 0.015 240);
+  --color-gray-900: oklch(0.24 0.01 240);
+  --color-gray-950: oklch(0.15 0.005 240);
+
+  /* Spacing System */
+  --spacing: 0.25rem;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-heading: var(--font-sans);
+
+  /* Border Radius */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Transition Speeds */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Easing Functions */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index Scale */
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+  --z-auto: auto;
+
+  /* Breakpoints - For reference. Tailwind handles these automatically */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Theme mode mechanism - allows toggling between light/dark/custom themes */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Media query variables for consistent breakpoints and container queries */
+@custom-media --sm (min-width: 640px);
+@custom-media --md (min-width: 768px);
+@custom-media --lg (min-width: 1024px);
+@custom-media --xl (min-width: 1280px);
+@custom-media --2xl (min-width: 1536px);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@custom-media --prefers-reduced-motion (prefers-reduced-motion: reduce);
+@custom-media --prefers-dark (prefers-color-scheme: dark);
+@custom-media --prefers-light (prefers-color-scheme: light);
